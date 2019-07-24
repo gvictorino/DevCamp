@@ -3,6 +3,7 @@ package com.devcamp
 import android.app.Activity
 import android.content.Intent
 import com.devcamp.ui.LoginActivity
+import com.devcamp.ui.MainActivity
 
 class Navigator(var activity: Activity) {
 
@@ -11,5 +12,14 @@ class Navigator(var activity: Activity) {
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         activity.startActivity(intent)
         activity.finish()
+    }
+
+    fun goToMainActivity(username: String, password: String) {
+        val intent = Intent(activity, MainActivity::class.java).apply {
+            putExtra(MainActivity.USERNAME, username)
+            putExtra(MainActivity.PASSWORD, password)
+        }
+
+        activity.startActivity(intent)
     }
 }
