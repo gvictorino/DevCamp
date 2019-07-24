@@ -1,4 +1,9 @@
 package com.devcamp.ui
 
-class AccountFragment {
+import androidx.fragment.app.Fragment
+
+class AccountFragment : Fragment(){
+    companion object {
+        const val TAG = "account"
+    }
 }

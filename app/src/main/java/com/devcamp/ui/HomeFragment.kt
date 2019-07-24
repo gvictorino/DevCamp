@@ -1,3 +1,9 @@
 package com.devcamp.ui
 
-class HomeFragment
+import androidx.fragment.app.Fragment
+
+class HomeFragment : Fragment(){
+    companion object {
+        const val TAG = "home"
+    }
+}
