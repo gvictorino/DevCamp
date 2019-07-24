@@ -23,6 +23,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         navigation = bottomNavigation
         navigation?.setOnNavigationItemSelectedListener(this)
 
+        onClickHome()
+
     }
 
     override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {

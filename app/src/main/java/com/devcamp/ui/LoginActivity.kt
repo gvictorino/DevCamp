@@ -26,7 +26,9 @@ class LoginActivity : Activity(){
         password = passwordEditText
         login = loginButton
 
-        login?.setOnClickListener { verifyLogin() }
+        login?.setOnClickListener {
+            verifyLogin()
+        }
     }
 
     private fun verifyLogin(){
@@ -34,7 +36,7 @@ class LoginActivity : Activity(){
         passwordText = password?.text.toString()
 
         if(!usernameText.isBlank() && !passwordText.isBlank()){
-            if(usernameText.equals("devcamp@teste.com") && passwordText.equals("devcamp2019")){
+            if(usernameText.equals("devcamp@teste") && passwordText.equals("devcamp2019")){
                 doLogin()
             }
         } else {

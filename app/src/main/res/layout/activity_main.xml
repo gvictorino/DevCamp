@@ -7,7 +7,7 @@
 
     <androidx.appcompat.widget.Toolbar
      android:id="@+id/toolbar"
-     android:layout_width="match_parent"
+     android:layout_width="0dp"
      android:layout_height="wrap_content"
      android:background="@color/colorPrimary"
      app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigation"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/mainFrameLayout"
             app:layout_constraintStart_toStartOf="parent"
