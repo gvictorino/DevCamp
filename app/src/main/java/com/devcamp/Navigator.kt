@@ -16,8 +16,7 @@ class Navigator(var activity: Activity) {
 
     fun goToMainActivity(username: String, password: String) {
         val intent = Intent(activity, MainActivity::class.java).apply {
-            putExtra(MainActivity.USERNAME, username)
-            putExtra(MainActivity.PASSWORD, password)
+
         }
 
         activity.startActivity(intent)
