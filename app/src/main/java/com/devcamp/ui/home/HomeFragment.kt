@@ -1,4 +1,4 @@
-package com.devcamp.ui
+package com.devcamp.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater

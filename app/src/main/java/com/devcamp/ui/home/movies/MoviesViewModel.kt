@@ -1,6 +1,6 @@
-package com.devcamp
+package com.devcamp.ui.home.movies
 
-data class MovieViewModel(
+data class MoviesViewModel(
     var movieID : Int = 0,
     var movieTitle : String = "",
     var movieDate: String = "",

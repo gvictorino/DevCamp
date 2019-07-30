@@ -1,10 +1,12 @@
-package com.devcamp.ui
+package com.devcamp.ui.main
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
-import android.widget.TextView
 import com.devcamp.R
+import com.devcamp.ui.about.AboutFragment
+import com.devcamp.ui.account.AccountFragment
+import com.devcamp.ui.home.HomeFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -3,7 +3,7 @@ package com.devcamp
 import android.app.Activity
 import android.content.Intent
 import com.devcamp.ui.LoginActivity
-import com.devcamp.ui.MainActivity
+import com.devcamp.ui.main.MainActivity
 
 class Navigator(var activity: Activity) {
 
