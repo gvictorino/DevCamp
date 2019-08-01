@@ -40,7 +40,7 @@ class LoginActivity : Activity(){
                 doLogin()
             }
         } else {
-            Toast.makeText(this,"Ops, tente de novo !", Toast.LENGTH_LONG).show()
+            doLogin()
         }
     }
 

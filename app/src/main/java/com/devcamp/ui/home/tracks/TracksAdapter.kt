@@ -12,7 +12,8 @@ import com.devcamp.ui.home.movies.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_recycler_home_tracks.view.*
 
-class TracksAdapter(private val tracks : MutableList<TracksViewModel>) : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
+class TracksAdapter() : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
+    private val tracks : MutableList<TracksViewModel> = mutableListOf()
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -29,11 +30,11 @@ class TracksAdapter(private val tracks : MutableList<TracksViewModel>) : Recycle
         val track = tracks[position]
         holder.textView.text = track.trackTitle
         holder.recyclerView.apply {
-            layoutManager = LinearLayoutManager(holder.recyclerView.context, LinearLayout.HORIZONTAL, false)
-            adapter = MoviesAdapter(track.movies).apply {
-                update(track.movies)
-            }
             setRecycledViewPool(viewPool)
+            layoutManager = LinearLayoutManager(holder.recyclerView.context, RecyclerView.HORIZONTAL, false)
+            adapter = MoviesAdapter()
+            (adapter as MoviesAdapter).update(track.movies)
+
         }
     }
 
@@ -44,7 +45,7 @@ class TracksAdapter(private val tracks : MutableList<TracksViewModel>) : Recycle
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val recyclerView : RecyclerView = itemView.home_tracks
+        val recyclerView : RecyclerView = itemView.tracksList
         val textView: TextView = itemView.categoryName
     }
 }

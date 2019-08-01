@@ -20,7 +20,7 @@ class TracksViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         itemView.tracksList.apply {
             layoutManager = playlistLayoutManager
-            adapter = MoviesAdapter(tracks.movies)
+            adapter = MoviesAdapter()
             setRecycledViewPool(viewPool)
         }
     }

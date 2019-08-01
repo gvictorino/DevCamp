@@ -19,20 +19,19 @@ class HomeFragment : Fragment(), HomeView{
     private  var adapter: TracksAdapter? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View{
-        presenter = HomePresenterBuilder.create(this)
-        listOfTracks = view?.findViewById(R.id.home_tracks)
-        listOfTracks?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        listOfTracks?.setHasFixedSize(true)
-        listOfTracks?.adapter = adapter
-
-        presenter?.onCreateView()
-
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        presenter = HomePresenterBuilder.create(this)
+        listOfTracks = view.findViewById(R.id.home_tracks)
+        listOfTracks?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        listOfTracks?.setHasFixedSize(true)
+        adapter = TracksAdapter()
+        listOfTracks?.adapter = adapter
 
+        presenter?.onCreateView()
 
     }
 
@@ -42,7 +41,7 @@ class HomeFragment : Fragment(), HomeView{
     }
 
     override fun showError() {
-        val alertDialog = AlertDialog.Builder(activity).create()
+        val alertDialog = AlertDialog.Builder(context).create()
         alertDialog.setTitle("Ops.. Algo deu errado")
         alertDialog.setMessage("Verifique sua conexão")
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Tentar novamente"

@@ -13,8 +13,10 @@ import com.devcamp.data.MoviesModel
 import com.devcamp.load
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MoviesAdapter(private val movies : MutableList<MoviesViewModel>)
+class MoviesAdapter()
     : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
+
+    private val movies : MutableList<MoviesViewModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =  LayoutInflater.from(parent.context)

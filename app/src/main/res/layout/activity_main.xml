@@ -19,6 +19,7 @@
             app:itemIconTint="@color/appDetailsColor"
             app:itemTextColor="@color/appDetailsColor"
             android:background="?android:attr/windowBackground"
+            app:itemRippleColor="@color/appDetailsColorWithAlpha"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
