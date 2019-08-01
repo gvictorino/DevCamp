@@ -12,30 +12,33 @@ import com.devcamp.R
 import com.devcamp.builders.HomePresenterBuilder
 import com.devcamp.ui.home.tracks.TracksAdapter
 import com.devcamp.ui.home.tracks.TracksViewModel
-import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(), HomeView{
-    private lateinit var presenter: HomePresenter
-    private lateinit var listOfTracks : RecyclerView
-    private lateinit var adapter: TracksAdapter
+    private  var presenter: HomePresenter? = null
+    private  var listOfTracks : RecyclerView? = null
+    private  var adapter: TracksAdapter? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View{
+        presenter = HomePresenterBuilder.create(this)
+        listOfTracks = view?.findViewById(R.id.home_tracks)
+        listOfTracks?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        listOfTracks?.setHasFixedSize(true)
+        listOfTracks?.adapter = adapter
+
+        presenter?.onCreateView()
+
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        presenter = HomePresenterBuilder.create(this)
-        listOfTracks = homeTracks
-        listOfTracks.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        listOfTracks.setHasFixedSize(true)
-        listOfTracks.adapter = adapter
 
-        presenter.onCreateView()
+
     }
 
     override fun addTracks(tracksList: MutableList<TracksViewModel>) {
-        adapter.update(tracksList)
+        adapter?.update(tracksList)
+
     }
 
     override fun showError() {
@@ -43,7 +46,7 @@ class HomeFragment : Fragment(), HomeView{
         alertDialog.setTitle("Ops.. Algo deu errado")
         alertDialog.setMessage("Verifique sua conexão")
         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Tentar novamente"
-        ) { dialog, which -> presenter.onClickTryAgain() }
+        ) { dialog, which -> presenter?.onClickTryAgain() }
         alertDialog.show()    }
 
     override fun showLoad() {
