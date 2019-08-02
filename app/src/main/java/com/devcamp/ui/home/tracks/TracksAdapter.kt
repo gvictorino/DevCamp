@@ -1,10 +1,12 @@
 package com.devcamp.ui.home.tracks
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.devcamp.R
@@ -12,7 +14,7 @@ import com.devcamp.ui.home.movies.MoviesAdapter
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_recycler_home_tracks.view.*
 
-class TracksAdapter() : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
+class TracksAdapter(val context : Context) : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
     private val tracks : MutableList<TracksViewModel> = mutableListOf()
 
     private val viewPool = RecyclerView.RecycledViewPool()
@@ -29,12 +31,18 @@ class TracksAdapter() : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val track = tracks[position]
         holder.textView.text = track.trackTitle
-        holder.recyclerView.apply {
-            setRecycledViewPool(viewPool)
-            layoutManager = LinearLayoutManager(holder.recyclerView.context, RecyclerView.HORIZONTAL, false)
-            adapter = MoviesAdapter()
-            (adapter as MoviesAdapter).update(track.movies)
 
+        val childLayoutManager = LinearLayoutManager( holder.recyclerView.context,
+            LinearLayout.HORIZONTAL, false)
+        childLayoutManager.initialPrefetchItemCount = 4
+
+        holder.recyclerView.apply {
+            setHasFixedSize(true)
+            adapter = MoviesAdapter(context).apply {
+                update(track.movies)
+            }
+            layoutManager = childLayoutManager
+            setRecycledViewPool(viewPool)
         }
     }
 

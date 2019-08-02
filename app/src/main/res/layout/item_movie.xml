@@ -1,43 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content">
-
-    <ImageView
-     android:id="@+id/itemCardImage"
+<androidx.cardview.widget.CardView
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/cardViewMovieItem"
+android:layout_width="wrap_content"
+android:background="@color/appColor"
+android:layout_height="wrap_content"
+app:cardCornerRadius="3dp"
+android:layout_marginStart="16dp"
+android:layout_marginEnd="8dp"
+app:cardElevation="3dp"
+app:cardBackgroundColor="#ffffff">
+    <androidx.constraintlayout.widget.ConstraintLayout
+     android:id="@+id/containerCardViewMovie"
      android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:adjustViewBounds="true"
-     android:scaleType="centerCrop"
-     app:layout_constraintBottom_toBottomOf="parent"
-     app:layout_constraintEnd_toEndOf="parent"
-     app:layout_constraintStart_toStartOf="parent"
-     app:layout_constraintTop_toTopOf="parent"
-     tools:srcCompat="@drawable/placeholder_track_item"/>
+     android:layout_height="wrap_content">
 
-    <TextView
-     android:id="@+id/itemPlaceholder"
-     android:layout_width="0dp"
-     android:layout_height="wrap_content"
-     android:textAlignment="center"
-     app:layout_constraintBottom_toBottomOf="@id/itemCardImage"
-     app:layout_constraintEnd_toEndOf="@id/itemCardImage"
-     app:layout_constraintStart_toStartOf="@id/itemCardImage"
-     app:layout_constraintTop_toTopOf="@id/itemCardImage"
-     tools:text="Um Homem Misterioso"
-     tools:visibility="visible" />
+        <ImageView
+         android:id="@+id/itemCardImage"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:scaleType="centerCrop"
+         android:adjustViewBounds="true"
+         app:layout_constraintBottom_toTopOf="@id/itemName"
+         app:layout_constraintEnd_toEndOf="@id/containerCardViewMovie"
+         app:layout_constraintStart_toStartOf="@id/containerCardViewMovie"
+         app:layout_constraintTop_toTopOf="@id/containerCardViewMovie"
+         app:srcCompat="@drawable/placeholder_track_item" />
 
-    <TextView
-     android:id="@+id/itemName"
-     android:layout_width="0dp"
-     android:layout_height="wrap_content"
-     app:layout_constraintEnd_toEndOf="@id/itemCardImage"
-     app:layout_constraintStart_toStartOf="@id/itemCardImage"
-     app:layout_constraintTop_toBottomOf="@id/itemCardImage"
-     tools:text="Um Homem Misterioso"
-     tools:visibility="visible" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+         android:id="@+id/itemName"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:maxLines="2"
+         android:ellipsize="end"
+         app:layout_constraintEnd_toEndOf="@id/itemCardImage"
+         app:layout_constraintStart_toStartOf="@id/itemCardImage"
+         app:layout_constraintTop_toBottomOf="@id/itemCardImage"
+         app:layout_constraintBottom_toBottomOf="@id/containerCardViewMovie"
+         tools:text="Um Homem Misterioso"
+         android:background="@color/appNavigationColor"
+         android:textColor="@color/appDetailsColorWithAlpha"
+         tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

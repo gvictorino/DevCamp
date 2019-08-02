@@ -9,11 +9,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.devcamp.R
-import com.devcamp.data.MoviesModel
-import com.devcamp.load
+import com.devcamp.builders.ImageLoader
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MoviesAdapter()
+class MoviesAdapter(val context : Context)
     : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
 
     private val movies : MutableList<MoviesViewModel> = mutableListOf()
@@ -30,7 +29,12 @@ class MoviesAdapter()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val movie = movies[position]
-        holder.imageView.load(movie.cardImage, ContextCompat.getDrawable(holder.imageView.context, R.drawable.placeholder_track_item))
+
+        ImageLoader.loadFitCenter(context,
+            movie.cardImage,
+            R.drawable.placeholder_track_item,
+            holder.imageView)
+
         holder.textView.text = movie.movieTitle
     }
 
