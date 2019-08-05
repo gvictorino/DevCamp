@@ -1,12 +1,6 @@
 package com.devcamp.ui.details
 
-import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
-import com.devcamp.R
-import com.devcamp.builders.ImageLoader
 
 class DetailsActivity : AppCompatActivity(), ProgramDetailsView{
     override fun addProgramDetails() {

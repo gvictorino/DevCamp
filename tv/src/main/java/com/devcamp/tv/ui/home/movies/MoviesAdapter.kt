@@ -1,4 +1,4 @@
-package com.devcamp.ui.home.movies
+package com.devcamp.tv.ui.home.movies
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.devcamp.R
-import com.devcamp.ImageLoader
+import com.devcamp.tv.ImageLoader
+import com.devcamp.tv.R
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesAdapter(val context : Context)

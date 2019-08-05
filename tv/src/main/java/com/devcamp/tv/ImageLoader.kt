@@ -1,4 +1,4 @@
-package com.devcamp.builders
+package com.devcamp.tv
 
 import android.content.Context
 import android.widget.ImageView
@@ -19,7 +19,8 @@ object ImageLoader {
 
     fun loadFitCenter(context: Context, url: String?, placeholder: Int?, imageView: ImageView) {
         val options = RequestOptions()
-            .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+            .priority(Priority.NORMAL)
+            .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 
         if (placeholder != null)
             options.placeholder(placeholder)
