@@ -7,6 +7,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.devcamp.tv.*
 import com.devcamp.tv.ui.AccountFragment.Companion.ACCOUNT_TAG
@@ -17,23 +18,28 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity(), View.OnFocusChangeListener,View.OnClickListener {
     private var isFirstTime: Boolean = true
 
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
+    init {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
         unselectedViews(activity_main_text_view_account)
+
+        activity_main_text_view_home.setOnClickListener(this)
+        activity_main_text_view_account.setOnClickListener(this)
+
+        activity_main_text_view_home.onFocusChangeListener = this
+        activity_main_text_view_account.onFocusChangeListener = this
 
         activity_main_text_view_home.selected()
         activity_main_text_view_home.requestFocus()
         onDestinationSelected(HOME_TAG)
 
-        activity_main_text_view_home.onFocusChangeListener = this
-        activity_main_text_view_account.onFocusChangeListener = this
-
-        activity_main_text_view_home.setOnClickListener(this)
-        activity_main_text_view_account.setOnClickListener(this)
-
-    }
+        openDrawer()    }
 
     override fun onBackPressed() {
         val viewSelected = whichViewIsSelected(activity_main_text_view_home, activity_main_text_view_account)

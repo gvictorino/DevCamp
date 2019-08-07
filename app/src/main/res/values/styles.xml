@@ -13,4 +13,6 @@
         <item name="android:textColor">@color/appDetailsColorWithAlpha</item>
     </style>
 
+
+
 </resources>
