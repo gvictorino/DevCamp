@@ -10,7 +10,7 @@
         <item name="colorAccent">@android:color/white</item>
         <item name="colorControlNormal">@android:color/white</item>
         <item name="colorControlHighlight">@android:color/white</item>
-        <item name="android:windowBackground">@color/appDetailsColorWithAlpha</item>
+        <item name="android:windowBackground">@color/appColor</item>
         <item name="windowActionModeOverlay">true</item>
     </style>
 

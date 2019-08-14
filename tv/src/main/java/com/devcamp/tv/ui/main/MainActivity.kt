@@ -1,7 +1,6 @@
-package com.devcamp.tv.ui
+package com.devcamp.tv.ui.main
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.transition.TransitionManager
 import android.view.KeyEvent
 import android.view.View
@@ -10,7 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.devcamp.tv.*
-import com.devcamp.tv.ui.AccountFragment.Companion.ACCOUNT_TAG
+import com.devcamp.tv.ui.account.AccountFragment
+import com.devcamp.tv.ui.account.AccountFragment.Companion.ACCOUNT_TAG
 import com.devcamp.tv.ui.home.HomeFragment
 import com.devcamp.tv.ui.home.HomeFragment.Companion.HOME_TAG
 import kotlinx.android.synthetic.main.activity_main.*
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity(), View.OnFocusChangeListener,View.OnClic
     private fun openDrawer() {
         activity_main_content_menu.layoutParams = FrameLayout.LayoutParams(resources.getDimensionPixelSize(R.dimen.spacings_two_hundred_fifty), FrameLayout.LayoutParams.MATCH_PARENT)
         activity_main_container.foreground = ContextCompat.getDrawable(baseContext,
-            R.color.appDetailsColorWithAlpha
+            R.color.blackFortyTransparency
         )
         TransitionManager.beginDelayedTransition(activity_main_content_menu)
     }

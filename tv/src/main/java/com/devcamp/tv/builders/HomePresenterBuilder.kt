@@ -1,5 +1,7 @@
 package com.devcamp.tv.builders
 
+import android.app.Activity
+import com.devcamp.tv.Navigator
 import com.devcamp.tv.ui.home.HomePresenter
 import com.devcamp.tv.ui.home.HomeView
 

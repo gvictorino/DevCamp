@@ -1,9 +1,8 @@
-package com.devcamp.tv.ui
+package com.devcamp.tv.ui.splash
 
 import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
-import android.view.WindowManager
 import com.devcamp.tv.Navigator
 import com.devcamp.tv.R
 

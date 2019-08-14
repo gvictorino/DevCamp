@@ -8,12 +8,16 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devcamp.tv.Navigator
 import com.devcamp.tv.R
+import com.devcamp.tv.ui.home.movies.MovieClickListener
 import com.devcamp.tv.ui.home.movies.MoviesAdapter
 import kotlinx.android.synthetic.main.item_recycler_home_tracks.view.*
 
-class TracksAdapter(val context : Context) : RecyclerView.Adapter<TracksAdapter.ViewHolder>(){
+class TracksAdapter(val context : Context, val navigator: Navigator) : RecyclerView.Adapter<TracksAdapter.ViewHolder>(),
+    MovieClickListener {
     private val tracks : MutableList<TracksViewModel> = mutableListOf()
+
 
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -36,7 +40,7 @@ class TracksAdapter(val context : Context) : RecyclerView.Adapter<TracksAdapter.
 
         holder.recyclerView.apply {
             setHasFixedSize(true)
-            adapter = MoviesAdapter(context).apply {
+            adapter = MoviesAdapter(context,this@TracksAdapter).apply {
                 update(track.movies)
             }
             layoutManager = childLayoutManager
@@ -48,6 +52,15 @@ class TracksAdapter(val context : Context) : RecyclerView.Adapter<TracksAdapter.
         this.tracks.clear()
         this.tracks.addAll(tracksList)
         notifyDataSetChanged()
+    }
+
+    override fun onClickMovie(position: Int) {
+        val movie = tracks[position].movies[position]
+        navigator.goToDetailsActivity(
+            movie.movieTitle,
+            movie.thumbImage,
+            movie.movieDuration,
+            movie.movieSinopse)
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

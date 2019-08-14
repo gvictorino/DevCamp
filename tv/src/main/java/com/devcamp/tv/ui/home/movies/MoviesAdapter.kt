@@ -5,20 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.devcamp.tv.ImageLoader
-import com.devcamp.tv.R
+import com.devcamp.tv.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 
-class MoviesAdapter(val context : Context)
-    : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
-
+class MoviesAdapter(val context : Context, val listener : MovieClickListener)
+    : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(), View.OnFocusChangeListener {
     private val movies : MutableList<MoviesViewModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =  LayoutInflater.from(parent.context)
             .inflate(R.layout.item_movie,parent,false)
+
+        v.isFocusable = true;
+        v.isFocusableInTouchMode = true
+
+        v.onFocusChangeListener = this
+
         return ViewHolder(v)
     }
 
@@ -34,8 +37,12 @@ class MoviesAdapter(val context : Context)
             R.drawable.placeholder_track_item,
             holder.imageView)
 
-        holder.textView.text = movie.movieTitle
-    }
+        holder.imageView.setOnClickListener {
+                listener.onClickMovie(
+                    position)
+            }
+
+        }
 
     fun update(movies: MutableList<MoviesViewModel>){
         this.movies.clear()
@@ -43,11 +50,18 @@ class MoviesAdapter(val context : Context)
         notifyDataSetChanged()
     }
 
+    override fun onFocusChange(view: View, hasFocus: Boolean) {
+        if(view.isFocused){
+            view.expand()
+            view.posterForeground.visibility = View.GONE
+        } else {
+            view.reduce()
+            view.posterForeground.visibility = View.VISIBLE
+        }
+    }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-
-        val textView : TextView = itemView.itemName
-        val imageView: ImageView = itemView.itemCardImage
-
+        val imageView: ImageView = itemView.poster
+        val foregroundPoster : ImageView = itemView.posterForeground
     }
 }

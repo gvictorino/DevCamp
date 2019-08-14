@@ -1,4 +1,4 @@
-package com.devcamp.tv.ui
+package com.devcamp.tv.ui.account
 
 import androidx.fragment.app.Fragment
 

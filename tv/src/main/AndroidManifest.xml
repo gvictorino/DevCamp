@@ -17,7 +17,7 @@
             android:logo="@mipmap/ic_launcher"
             tools:replace="android:allowBackup,android:label,android:supportsRtl,android:theme"
             android:theme="@style/Theme.Base">
-        <activity android:name=".ui.SplashActivity">
+        <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -26,8 +26,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".ui.main.MainActivity"
         android:theme="@style/Theme.Base"/>
+
+        <activity android:name=".ui.details.DetailsActivity"/>
     </application>
 
 </manifest>

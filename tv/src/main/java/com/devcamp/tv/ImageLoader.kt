@@ -19,6 +19,7 @@ object ImageLoader {
 
     fun loadFitCenter(context: Context, url: String?, placeholder: Int?, imageView: ImageView) {
         val options = RequestOptions()
+            .centerCrop()
             .priority(Priority.NORMAL)
             .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
 

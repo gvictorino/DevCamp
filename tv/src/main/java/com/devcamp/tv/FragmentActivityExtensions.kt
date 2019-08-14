@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import com.devcamp.tv.ui.home.HomeFragment
 import com.devcamp.tv.ui.home.HomeFragment.Companion.HOME_TAG
-import com.devcamp.tv.ui.AccountFragment
+import com.devcamp.tv.ui.account.AccountFragment
 
 
 const val ROOT_TAG = "root_fragment"

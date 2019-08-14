@@ -1,5 +1,6 @@
 package com.devcamp.tv.ui.home
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.devcamp.tv.Navigator
 import com.devcamp.tv.R
 import com.devcamp.tv.builders.HomePresenterBuilder
 import com.devcamp.tv.ui.home.tracks.TracksAdapter
@@ -39,7 +41,7 @@ class HomeFragment : Fragment(), HomeView {
         listOfTracks = view.findViewById(R.id.fragment_home_recycler_view)
         listOfTracks?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         listOfTracks?.setHasFixedSize(true)
-        adapter = context?.let { TracksAdapter(it) }
+        adapter = context?.let { TracksAdapter(it, Navigator(activity as Activity)) }
         listOfTracks?.adapter = adapter
 
         progressBar = fragment_home_custom_view_loading

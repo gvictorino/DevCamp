@@ -1,7 +1,9 @@
 package com.devcamp.tv
 
+import android.annotation.TargetApi
 import android.app.Activity
 import android.content.Context
+import android.os.Build
 import android.os.Handler
 import android.os.SystemClock
 import android.view.View
@@ -31,6 +33,18 @@ fun View.focusDelayed(): View {
 fun View.selected(): View {
     isSelected = true
     return this
+}
+
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+fun View.expand() {
+    elevation = 1f
+    animate().scaleX(1.1f).scaleY(1.1f).setDuration(200).start()
+}
+
+@TargetApi(Build.VERSION_CODES.LOLLIPOP)
+fun View.reduce() {
+    elevation = 0f
+    animate().scaleX(1.0f).scaleY(1.0f).setDuration(200).start()
 }
 
 inline fun Context.preventMultipleClick(action: () -> Unit) {

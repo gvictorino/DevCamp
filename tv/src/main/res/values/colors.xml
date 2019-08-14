@@ -8,4 +8,8 @@
     <color name="appDetailsColor">#F4C131</color>
     <color name="appDetailsColorWithAlpha">#B5F4C131</color>
     <color name="appEditTextAlphaBg">#3EF1EFEA</color>
+    <color name="blackFortyTransparency">#66000000</color>
+    <color name="blackTwentyTransparency">#33000000</color>
+
+
 </resources>

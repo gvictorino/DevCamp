@@ -7,9 +7,7 @@ import com.devcamp.tv.ui.home.tracks.TracksViewMapper
 
 class HomePresenter(
     private val view: HomeView,
-    private val getTracks: TracksUseCase) : TracksCallback {
-
-
+    private val getTracks: TracksUseCase) : TracksCallback{
     private var isPaused = false
     private var isLoading = false
     private var tracksList = listOf<Tracks>()
@@ -48,3 +46,4 @@ class HomePresenter(
         }
     }
 }
+

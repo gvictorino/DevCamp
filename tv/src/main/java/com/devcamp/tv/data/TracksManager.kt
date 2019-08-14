@@ -40,9 +40,6 @@ class TracksManager : TracksContract{
 
     }
 
-
-
-
     companion object {
         private val TAG = "TracksManager"
         private val BASE_URL = "https://private-aa6a00-devcamp2019.apiary-mock.com/"
