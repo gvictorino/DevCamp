@@ -13,13 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.devcamp.tv.Navigator
 import com.devcamp.tv.R
 import com.devcamp.tv.builders.HomePresenterBuilder
+import com.devcamp.tv.ui.home.movies.MovieClickListener
+import com.devcamp.tv.ui.home.movies.MoviesViewModel
 import com.devcamp.tv.ui.home.tracks.TracksAdapter
 import com.devcamp.tv.ui.home.tracks.TracksViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.item_recycler_home_tracks.*
 
-class HomeFragment : Fragment(), HomeView {
-    private  var presenter: HomePresenter? = null
+class HomeFragment : Fragment(), HomeView, MovieClickListener {
+        private  var presenter: HomePresenter? = null
     private  var listOfTracks : RecyclerView? = null
     private  var adapter: TracksAdapter? = null
     private  var progressBar : ProgressBar? = null
@@ -41,8 +43,9 @@ class HomeFragment : Fragment(), HomeView {
         listOfTracks = view.findViewById(R.id.fragment_home_recycler_view)
         listOfTracks?.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         listOfTracks?.setHasFixedSize(true)
-        adapter = context?.let { TracksAdapter(it, Navigator(activity as Activity)) }
+        adapter = context?.let { TracksAdapter(this) }
         listOfTracks?.adapter = adapter
+
 
         progressBar = fragment_home_custom_view_loading
 
@@ -78,4 +81,12 @@ class HomeFragment : Fragment(), HomeView {
         tracksList?.visibility = View.VISIBLE
         progressBar?.visibility = View.GONE    }
 
+
+    override fun onClickMovie(movie: MoviesViewModel) {
+        Navigator(activity).goToDetailsActivity(
+            movie.movieTitle,
+            movie.cardImage,
+            movie.movieDuration,
+            movie.movieSinopse)
+    }
 }

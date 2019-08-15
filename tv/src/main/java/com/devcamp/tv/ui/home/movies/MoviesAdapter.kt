@@ -10,19 +10,27 @@ import com.devcamp.tv.*
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MoviesAdapter(val context : Context, val listener : MovieClickListener)
-    : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(), View.OnFocusChangeListener {
+    : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(), View.OnFocusChangeListener{
+
     private val movies : MutableList<MoviesViewModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val v =  LayoutInflater.from(parent.context)
+        val view =  LayoutInflater.from(parent.context)
             .inflate(R.layout.item_movie,parent,false)
 
-        v.isFocusable = true;
-        v.isFocusableInTouchMode = true
+    view.isFocusable = true
+    view.isFocusableInTouchMode = true
+    view.onFocusChangeListener = this
+    view.isFocused
 
-        v.onFocusChangeListener = this
 
-        return ViewHolder(v)
+
+
+        // view.isFocusable = true
+       // view.isFocusableInTouchMode = true
+        //view.onFocusChangeListener = this
+
+        return ViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -37,12 +45,11 @@ class MoviesAdapter(val context : Context, val listener : MovieClickListener)
             R.drawable.placeholder_track_item,
             holder.imageView)
 
-        holder.imageView.setOnClickListener {
-                listener.onClickMovie(
-                    position)
-            }
 
-        }
+        holder.imageView.setOnClickListener {
+                listener.onClickMovie(movie)
+            }
+    }
 
     fun update(movies: MutableList<MoviesViewModel>){
         this.movies.clear()

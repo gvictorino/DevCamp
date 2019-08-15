@@ -14,11 +14,8 @@ import com.devcamp.tv.ui.home.movies.MovieClickListener
 import com.devcamp.tv.ui.home.movies.MoviesAdapter
 import kotlinx.android.synthetic.main.item_recycler_home_tracks.view.*
 
-class TracksAdapter(val context : Context, val navigator: Navigator) : RecyclerView.Adapter<TracksAdapter.ViewHolder>(),
-    MovieClickListener {
+class TracksAdapter(private val listener: MovieClickListener) : RecyclerView.Adapter<TracksAdapter.ViewHolder>() {
     private val tracks : MutableList<TracksViewModel> = mutableListOf()
-
-
     private val viewPool = RecyclerView.RecycledViewPool()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,9 +37,10 @@ class TracksAdapter(val context : Context, val navigator: Navigator) : RecyclerV
 
         holder.recyclerView.apply {
             setHasFixedSize(true)
-            adapter = MoviesAdapter(context,this@TracksAdapter).apply {
-                update(track.movies)
-            }
+            adapter = MoviesAdapter(context, listener).apply {
+                    update(track.movies)
+                }
+
             layoutManager = childLayoutManager
             setRecycledViewPool(viewPool)
         }
@@ -52,15 +50,6 @@ class TracksAdapter(val context : Context, val navigator: Navigator) : RecyclerV
         this.tracks.clear()
         this.tracks.addAll(tracksList)
         notifyDataSetChanged()
-    }
-
-    override fun onClickMovie(position: Int) {
-        val movie = tracks[position].movies[position]
-        navigator.goToDetailsActivity(
-            movie.movieTitle,
-            movie.thumbImage,
-            movie.movieDuration,
-            movie.movieSinopse)
     }
 
     inner class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

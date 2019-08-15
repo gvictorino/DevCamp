@@ -5,11 +5,11 @@ import android.content.Intent
 import com.devcamp.tv.ui.details.DetailsActivity
 import com.devcamp.tv.ui.main.MainActivity
 
-class Navigator(var activity: Activity) {
+class Navigator(var activity: Activity?) {
 
     fun goToHomeActivity() {
         val intent = Intent(activity, MainActivity::class.java)
-        activity.startActivity(intent)
+        activity?.startActivity(intent)
     }
 
     fun goToDetailsActivity(movieTitle : String? = "",
@@ -25,6 +25,6 @@ class Navigator(var activity: Activity) {
 
         }
 
-        activity.startActivity(intent)
+        activity?.startActivity(intent)
     }
 }
