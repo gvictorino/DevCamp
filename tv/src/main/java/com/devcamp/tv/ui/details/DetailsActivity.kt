@@ -32,8 +32,8 @@ class DetailsActivity : Activity(), DetailsView{
 
         thumbBackground = movieDetailsBackground
         title = movieTitleTextView
-        sinopse = movieDurationTextView
-        duration = movieSinopseTextview
+        sinopse = movieSinopseTextview
+        duration =  movieDurationTextView
         buttonWatchTrailer = watchTrailerButton
         presenter = DetailsPresenterBuilder.create(this)
 

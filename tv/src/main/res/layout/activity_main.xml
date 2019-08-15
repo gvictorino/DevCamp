@@ -23,7 +23,7 @@ android:animateLayoutChanges="true">
             android:id="@+id/activity_main_content_menu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:background="@color/appColor"
+            android:background="@color/appNavigationColor"
             android:maxWidth="250dp"
             android:minWidth="80dp">
 
@@ -81,7 +81,7 @@ android:animateLayoutChanges="true">
                 android:focusableInTouchMode="true"
                 android:nextFocusDown="@drawable/button_selector"
                 android:layout_height="0dp"
-                android:background="@color/appColor"
+                android:background="@color/appNavigationColor"
                 app:layout_constraintBottom_toBottomOf="@id/activity_main_content_menu"
                 app:layout_constraintEnd_toEndOf="@id/activity_main_content_menu"
                 app:layout_constraintTop_toTopOf="@id/activity_main_content_menu" />

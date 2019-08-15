@@ -85,7 +85,7 @@ class HomeFragment : Fragment(), HomeView, MovieClickListener {
     override fun onClickMovie(movie: MoviesViewModel) {
         Navigator(activity).goToDetailsActivity(
             movie.movieTitle,
-            movie.cardImage,
+            movie.thumbImage,
             movie.movieDuration,
             movie.movieSinopse)
     }

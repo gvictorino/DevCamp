@@ -24,12 +24,6 @@ class MoviesAdapter(val context : Context, val listener : MovieClickListener)
     view.isFocused
 
 
-
-
-        // view.isFocusable = true
-       // view.isFocusableInTouchMode = true
-        //view.onFocusChangeListener = this
-
         return ViewHolder(view)
     }
 

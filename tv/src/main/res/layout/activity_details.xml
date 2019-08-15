@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="NOME FILME"
-            android:textColor="@color/appDetailsColor"
+            android:textColor="@android:color/white"
             android:textStyle="bold"
             android:layout_marginLeft="30dp"
             android:textSize="40dp"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             tools:text="2hr e 40 mins"
             android:layout_marginLeft="30dp"
-            android:textColor="@color/appDetailsColorWithAlpha"
+            android:textColor="@android:color/white"
             android:textStyle="normal"
             android:textSize="20dp"
             app:layout_constraintBottom_toTopOf="@id/movieSinopseTextview"
@@ -56,7 +56,7 @@
 
     <TextView
             android:id="@+id/movieSinopseTextview"
-            android:layout_width="300dp"
+            android:layout_width="400dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/movieDurationTextView"
@@ -66,9 +66,19 @@
             android:maxLines="5"
             android:textSize="14dp"
             android:singleLine="false"
-            android:textColor="@color/appDetailsColorWithAlpha"
+            android:textColor="@android:color/white"
             tools:text="AOKSOAKSOAKSOASOAKSOKASOAOKSOASKOAKSO
      ASKOAKSAOKSOASKAOKSOAKSOKAOKSAOKSKOASOKAKOSOKAOKSAOKSOKAOKSAOKSASKOAS"/>
+
+    <androidx.constraintlayout.widget.Barrier
+       android:id="@+id/barrier"
+       android:orientation="vertical"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintTop_toTopOf="parent"
+       android:layout_width="wrap_content"
+       app:barrierDirection="end"
+       app:constraint_referenced_ids="movieSinopseTextview,movieTitleTextView"
+       android:layout_height="wrap_content"/>
 
     <Button
             android:id="@+id/watchTrailerButton"
@@ -83,6 +93,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_width="wrap_content"
             android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"
             android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
